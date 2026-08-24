@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ruzgar</name>
+    </assembly>
+    <members>
+        <member name="T:Ruzgar.ViewModels.HomeViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:Ruzgar.ViewModels.HomeViewModel.Weather">
+            <inheritdoc cref="F:Ruzgar.ViewModels.HomeViewModel.weather"/>
+        </member>
+        <member name="P:Ruzgar.ViewModels.HomeViewModel.IsLoading">
+            <inheritdoc cref="F:Ruzgar.ViewModels.HomeViewModel.isLoading"/>
+        </member>
+        <member name="P:Ruzgar.ViewModels.HomeViewModel.IsSearching">
+            <inheritdoc cref="F:Ruzgar.ViewModels.HomeViewModel.isSearching"/>
+        </member>
+        <member name="P:Ruzgar.ViewModels.HomeViewModel.SearchText">
+            <inheritdoc cref="F:Ruzgar.ViewModels.HomeViewModel.searchText"/>
+        </member>
+        <member name="P:Ruzgar.ViewModels.HomeViewModel.ErrorMessage">
+            <inheritdoc cref="F:Ruzgar.ViewModels.HomeViewModel.errorMessage"/>
+        </member>
+        <member name="P:Ruzgar.ViewModels.HomeViewModel.HasCityResults">
+            <inheritdoc cref="F:Ruzgar.ViewModels.HomeViewModel.hasCityResults"/>
+        </member>
+        <member name="P:Ruzgar.ViewModels.HomeViewModel.HasFavoriteCities">
+            <inheritdoc cref="F:Ruzgar.ViewModels.HomeViewModel.hasFavoriteCities"/>
+        </member>
+        <member name="P:Ruzgar.ViewModels.HomeViewModel.IsCurrentCityFavorite">
+            <inheritdoc cref="F:Ruzgar.ViewModels.HomeViewModel.isCurrentCityFavorite"/>
+        </member>
+        <member name="P:Ruzgar.ViewModels.HomeViewModel.FavoriteButtonText">
+            <inheritdoc cref="F:Ruzgar.ViewModels.HomeViewModel.favoriteButtonText"/>
+        </member>
+        <member name="P:Ruzgar.ViewModels.HomeViewModel.FavoriteActionText">
+            <inheritdoc cref="F:Ruzgar.ViewModels.HomeViewModel.favoriteActionText"/>
+        </member>
+        <member name="P:Ruzgar.ViewModels.HomeViewModel.HasSearchHistory">
+            <inheritdoc cref="F:Ruzgar.ViewModels.HomeViewModel.hasSearchHistory"/>
+        </member>
+        <member name="P:Ruzgar.ViewModels.HomeViewModel.ShowSearchHistory">
+            <inheritdoc cref="F:Ruzgar.ViewModels.HomeViewModel.showSearchHistory"/>
+        </member>
+        <member name="M:Ruzgar.ViewModels.HomeViewModel.OnIsLoadingChanged(System.Boolean)">
+            <summary>Executes the logic for when <see cref="P:Ruzgar.ViewModels.HomeViewModel.IsLoading"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:Ruzgar.ViewModels.HomeViewModel.IsLoading"/> is changed.</remarks>
+        </member>
+        <member name="M:Ruzgar.ViewModels.HomeViewModel.OnIsSearchingChanged(System.Boolean)">
+            <summary>Executes the logic for when <see cref="P:Ruzgar.ViewModels.HomeViewModel.IsSearching"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:Ruzgar.ViewModels.HomeViewModel.IsSearching"/> is changed.</remarks>
+        </member>
+        <member name="M:Ruzgar.ViewModels.HomeViewModel.OnSearchTextChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:Ruzgar.ViewModels.HomeViewModel.SearchText"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:Ruzgar.ViewModels.HomeViewModel.SearchText"/> is changed.</remarks>
+        </member>
+        <member name="T:Ruzgar.Resource">
+            <summary>
+            Android Resource Designer class.
+            Exposes the Android Resource designer assembly into the project Namespace.
+            </summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Weather">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Weather" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsLoading">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsLoading" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsSearching">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsSearching" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SearchText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SearchText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ErrorMessage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ErrorMessage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.HasCityResults">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "HasCityResults" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.HasFavoriteCities">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "HasFavoriteCities" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsCurrentCityFavorite">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsCurrentCityFavorite" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FavoriteButtonText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FavoriteButtonText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FavoriteActionText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FavoriteActionText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.HasSearchHistory">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "HasSearchHistory" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ShowSearchHistory">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ShowSearchHistory" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Weather">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Weather" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsLoading">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsLoading" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsSearching">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsSearching" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SearchText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SearchText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ErrorMessage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ErrorMessage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.HasCityResults">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "HasCityResults" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.HasFavoriteCities">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "HasFavoriteCities" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsCurrentCityFavorite">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsCurrentCityFavorite" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FavoriteButtonText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FavoriteButtonText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FavoriteActionText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FavoriteActionText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.HasSearchHistory">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "HasSearchHistory" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ShowSearchHistory">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ShowSearchHistory" generated properties.</summary>
+        </member>
+    </members>
+</doc>

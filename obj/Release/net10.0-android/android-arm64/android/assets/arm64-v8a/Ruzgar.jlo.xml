@@ -1,0 +1,20 @@
+<api>
+  <jcw-types>
+    <type name="MainActivity" package="crc64a48a3859b3d06963" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="crc6488302ad6e9e4df1a.MauiAppCompatActivity" partial_assembly_qualified_name="Ruzgar.MainActivity, Ruzgar">
+      <constructors>
+        <constructor name="MainActivity" method="n_.ctor:()V:" jni_signature="()V" managed_parameters="" retval="void" is_dynamically_registered="True" />
+        <constructor name="MainActivity" method="n_.ctor:(I)V:" jni_signature="(I)V" managed_parameters="System.Int32, System.Private.CoreLib" params="int p0" retval="void" is_dynamically_registered="True" super_call="p0" activate_call="p0" />
+      </constructors>
+      <methods>
+        <method name="onCreate" method="n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler" jni_signature="(Landroid/os/Bundle;)V" params="android.os.Bundle p0" retval="void" super_call="p0" activate_call="p0" />
+        <method name="onResume" method="n_onResume:()V:GetOnResumeHandler" jni_signature="()V" retval="void" />
+        <method name="onConfigurationChanged" method="n_onConfigurationChanged:(Landroid/content/res/Configuration;)V:GetOnConfigurationChanged_Landroid_content_res_Configuration_Handler" jni_signature="(Landroid/content/res/Configuration;)V" params="android.content.res.Configuration p0" retval="void" super_call="p0" activate_call="p0" />
+      </methods>
+    </type>
+    <type name="MainApplication" package="crc64a48a3859b3d06963" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="crc6488302ad6e9e4df1a.MauiApplication" is_application="True" partial_assembly_qualified_name="Ruzgar.MainApplication, Ruzgar" application_constructor="MainApplication" />
+  </jcw-types>
+  <acw-types partial-assembly-name="Ruzgar" module-name="Ruzgar.dll">
+    <type assembly-qualified-name="Ruzgar.MainActivity, Ruzgar, Version=1.0.102.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="ruzgar.MainActivity" java-key="crc64a48a3859b3d06963.MainActivity" managed-key="Ruzgar.MainActivity" partial-assembly-qualified-name="Ruzgar.MainActivity, Ruzgar" />
+    <type assembly-qualified-name="Ruzgar.MainApplication, Ruzgar, Version=1.0.102.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="ruzgar.MainApplication" java-key="crc64a48a3859b3d06963.MainApplication" managed-key="Ruzgar.MainApplication" partial-assembly-qualified-name="Ruzgar.MainApplication, Ruzgar" />
+  </acw-types>
+</api>

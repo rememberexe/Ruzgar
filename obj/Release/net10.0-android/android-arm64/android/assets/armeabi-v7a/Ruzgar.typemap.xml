@@ -1,0 +1,8 @@
+<api type="release" assembly-name="Ruzgar" mvid="57d33864c69947e3a4a7ea6f005e1b42">
+  <module assembly-name="Ruzgar" mvid="57d33864c69947e3a4a7ea6f005e1b42" mvid-bytes="ZDjTV5nG40ekp+pvAF4bQg==">
+    <types-scratch>
+      <entry key="crc64a48a3859b3d06963/MainActivity" java-name="crc64a48a3859b3d06963/MainActivity" managed-type-name="Ruzgar.MainActivity" token="33554469" />
+      <entry key="crc64a48a3859b3d06963/MainApplication" java-name="crc64a48a3859b3d06963/MainApplication" managed-type-name="Ruzgar.MainApplication" token="33554470" />
+    </types-scratch>
+  </module>
+</api>

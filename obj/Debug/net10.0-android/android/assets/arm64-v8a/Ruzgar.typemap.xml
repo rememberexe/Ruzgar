@@ -1,0 +1,10 @@
+<api type="debug" assembly-name="Ruzgar" mvid="f4bfa1efd96741909a2adcf85ec2edb6">
+  <java-to-managed>
+    <entry java-name="crc64a48a3859b3d06963/MainActivity" managed-name="Ruzgar.MainActivity, Ruzgar" managed-type-token-id="33554446" />
+    <entry java-name="crc64a48a3859b3d06963/MainApplication" managed-name="Ruzgar.MainApplication, Ruzgar" managed-type-token-id="33554447" />
+  </java-to-managed>
+  <managed-to-java>
+    <entry java-name="crc64a48a3859b3d06963/MainActivity" managed-name="Ruzgar.MainActivity, Ruzgar" managed-type-token-id="33554446" />
+    <entry java-name="crc64a48a3859b3d06963/MainApplication" managed-name="Ruzgar.MainApplication, Ruzgar" managed-type-token-id="33554447" />
+  </managed-to-java>
+</api>

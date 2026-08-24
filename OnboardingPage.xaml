@@ -1,0 +1,275 @@
+<ContentPage
+    x:Class="Ruzgar.OnboardingPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:controls="clr-namespace:Ruzgar.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#020617"
+    Shell.NavBarIsVisible="False">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#0F172A" Offset="0.0" />
+            <GradientStop Color="#1E3A8A" Offset="0.45" />
+            <GradientStop Color="#020617" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid>
+
+        <controls:AtmosphereView
+            WeatherCode="2"
+            AccentColor="#38BDF8"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            Opacity="0.65" />
+
+        <Border
+            WidthRequest="330"
+            HeightRequest="330"
+            Margin="-150,-120,0,0"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Opacity="0.32"
+            StrokeThickness="0"
+            InputTransparent="True">
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#93C5FD" Offset="0.0" />
+                    <GradientStop Color="#00FFFFFF" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="180" />
+            </Border.StrokeShape>
+        </Border>
+
+        <Border
+            WidthRequest="280"
+            HeightRequest="280"
+            Margin="0,0,-130,-140"
+            HorizontalOptions="End"
+            VerticalOptions="End"
+            Opacity="0.24"
+            StrokeThickness="0"
+            InputTransparent="True">
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#38BDF8" Offset="0.0" />
+                    <GradientStop Color="#00FFFFFF" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="150" />
+            </Border.StrokeShape>
+        </Border>
+
+        <Grid
+            Padding="24,50,24,28"
+            RowDefinitions="Auto,*,Auto">
+
+            <Grid ColumnDefinitions="*,Auto">
+                <VerticalStackLayout Spacing="2">
+                    <Label
+                        Text="Rüzgar'a hoş geldin"
+                        TextColor="White"
+                        FontSize="24"
+                        FontAttributes="Bold" />
+
+                    <Label
+                        Text="Uygulamayı hızlıca tanıyalım"
+                        TextColor="#CBD5E1"
+                        FontSize="13" />
+                </VerticalStackLayout>
+
+                <Border
+                    Grid.Column="1"
+                    Padding="14,8"
+                    Stroke="#35FFFFFF"
+                    StrokeThickness="1"
+                    BackgroundColor="#20FFFFFF">
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SkipButton_Tapped" />
+                    </Border.GestureRecognizers>
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="18" />
+                    </Border.StrokeShape>
+
+                    <Label
+                        Text="Geç"
+                        TextColor="White"
+                        FontSize="13"
+                        FontAttributes="Bold" />
+                </Border>
+            </Grid>
+
+            <VerticalStackLayout
+                x:Name="OnboardingContent"
+                Grid.Row="1"
+                Spacing="26"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+
+                <Border
+                    WidthRequest="150"
+                    HeightRequest="150"
+                    HorizontalOptions="Center"
+                    Stroke="#55FFFFFF"
+                    StrokeThickness="1">
+
+                    <Border.Background>
+                        <RadialGradientBrush Center="0.5,0.5" Radius="0.78">
+                            <GradientStop Color="#55FFFFFF" Offset="0.0" />
+                            <GradientStop Color="#2260A5FA" Offset="0.62" />
+                            <GradientStop Color="#08000000" Offset="1.0" />
+                        </RadialGradientBrush>
+                    </Border.Background>
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="48" />
+                    </Border.StrokeShape>
+
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="#90000000"
+                            Offset="0,18"
+                            Radius="36"
+                            Opacity="0.44" />
+                    </Border.Shadow>
+
+                    <controls:WeatherBadgeView
+                        x:Name="IconBadge"
+                        WidthRequest="112"
+                        HeightRequest="112"
+                        WeatherCode="2"
+                        AccentColor="#60A5FA"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Border>
+
+                <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                    <Label
+                        x:Name="TitleLabel"
+                        Text="Canlı hava durumu"
+                        TextColor="White"
+                        FontSize="30"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center" />
+
+                    <Label
+                        x:Name="DescriptionLabel"
+                        Text="Seçtiğin şehir için anlık hava durumunu, saatlik akışı ve haftalık tahmini tek ekranda gör."
+                        TextColor="#DDEBFF"
+                        FontSize="15"
+                        LineHeight="1.25"
+                        HorizontalTextAlignment="Center"
+                        WidthRequest="310" />
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+
+            <VerticalStackLayout
+                Grid.Row="2"
+                Spacing="18">
+
+                <HorizontalStackLayout
+                    HorizontalOptions="Center"
+                    Spacing="8">
+
+                    <Border
+                        x:Name="Dot1"
+                        WidthRequest="24"
+                        HeightRequest="7"
+                        StrokeThickness="0"
+                        BackgroundColor="White">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="4" />
+                        </Border.StrokeShape>
+                    </Border>
+
+                    <Border
+                        x:Name="Dot2"
+                        WidthRequest="7"
+                        HeightRequest="7"
+                        StrokeThickness="0"
+                        BackgroundColor="#55FFFFFF">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="4" />
+                        </Border.StrokeShape>
+                    </Border>
+
+                    <Border
+                        x:Name="Dot3"
+                        WidthRequest="7"
+                        HeightRequest="7"
+                        StrokeThickness="0"
+                        BackgroundColor="#55FFFFFF">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="4" />
+                        </Border.StrokeShape>
+                    </Border>
+
+                    <Border
+                        x:Name="Dot4"
+                        WidthRequest="7"
+                        HeightRequest="7"
+                        StrokeThickness="0"
+                        BackgroundColor="#55FFFFFF">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="4" />
+                        </Border.StrokeShape>
+                    </Border>
+
+                </HorizontalStackLayout>
+
+                <Border
+                    x:Name="NextButton"
+                    HeightRequest="56"
+                    StrokeThickness="0">
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="NextButton_Tapped" />
+                    </Border.GestureRecognizers>
+
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#60A5FA" Offset="0.0" />
+                            <GradientStop Color="#2563EB" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="28" />
+                    </Border.StrokeShape>
+
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="#80000000"
+                            Offset="0,12"
+                            Radius="26"
+                            Opacity="0.36" />
+                    </Border.Shadow>
+
+                    <Label
+                        x:Name="NextButtonText"
+                        Text="Devam"
+                        TextColor="White"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Border>
+
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

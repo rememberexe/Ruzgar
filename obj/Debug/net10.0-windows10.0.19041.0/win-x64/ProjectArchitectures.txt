@@ -1,0 +1,1 @@
+D:\Mobile\Ruzgar\Ruzgar\Ruzgar.csproj;x64

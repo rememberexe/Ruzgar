@@ -1,0 +1,359 @@
+<ContentPage
+    x:Class="Ruzgar.AboutPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:controls="clr-namespace:Ruzgar.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#020617"
+    Shell.NavBarIsVisible="False">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#0F172A" Offset="0.0" />
+            <GradientStop Color="#1E3A8A" Offset="0.45" />
+            <GradientStop Color="#020617" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid>
+
+        <controls:AtmosphereView
+            WeatherCode="1"
+            AccentColor="#60A5FA"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            Opacity="0.65" />
+
+        <Border
+            WidthRequest="330"
+            HeightRequest="330"
+            Margin="-150,-120,0,0"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Opacity="0.32"
+            StrokeThickness="0"
+            InputTransparent="True">
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#93C5FD" Offset="0.0" />
+                    <GradientStop Color="#00FFFFFF" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="180" />
+            </Border.StrokeShape>
+        </Border>
+
+        <ScrollView>
+            <VerticalStackLayout
+                x:Name="AboutRoot"
+                Padding="24,48,24,30"
+                Spacing="18"
+                Opacity="0"
+                TranslationY="24">
+
+                <!-- Üst bar -->
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
+
+                    <Border
+                        x:Name="BackButton"
+                        WidthRequest="48"
+                        HeightRequest="48"
+                        Stroke="#45FFFFFF"
+                        StrokeThickness="1"
+                        BackgroundColor="#24FFFFFF">
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BackButton_Tapped" />
+                        </Border.GestureRecognizers>
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="24" />
+                        </Border.StrokeShape>
+
+                        <Label
+                            Text="‹"
+                            TextColor="White"
+                            FontSize="34"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Margin="0,-4,0,0" />
+                    </Border>
+
+                    <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                        <Label
+                            Text="Hakkında"
+                            TextColor="White"
+                            FontSize="25"
+                            FontAttributes="Bold" />
+
+                        <Label
+                            Text="Rüzgar uygulaması"
+                            TextColor="#D6E2F0"
+                            FontSize="13" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <!-- Ana tanıtım kartı -->
+                <Border
+                    Padding="24"
+                    Stroke="#55FFFFFF"
+                    StrokeThickness="1">
+
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#3AFFFFFF" Offset="0.0" />
+                            <GradientStop Color="#12000000" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="42" />
+                    </Border.StrokeShape>
+
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="#AA000000"
+                            Offset="0,18"
+                            Radius="36"
+                            Opacity="0.52" />
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Spacing="18" HorizontalOptions="Center">
+
+                        <Border
+                            WidthRequest="116"
+                            HeightRequest="116"
+                            Stroke="#55FFFFFF"
+                            StrokeThickness="1"
+                            HorizontalOptions="Center">
+
+                            <Border.Background>
+                                <RadialGradientBrush Center="0.5,0.5" Radius="0.78">
+                                    <GradientStop Color="#60A5FA" Offset="0.0" />
+                                    <GradientStop Color="#2260A5FA" Offset="0.62" />
+                                    <GradientStop Color="#08000000" Offset="1.0" />
+                                </RadialGradientBrush>
+                            </Border.Background>
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="38" />
+                            </Border.StrokeShape>
+
+                            <Label
+                                Text="〰"
+                                TextColor="White"
+                                FontSize="58"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                Margin="0,-5,0,0" />
+                        </Border>
+
+                        <VerticalStackLayout Spacing="6">
+                            <Label
+                                Text="{Binding AppName}"
+                                TextColor="White"
+                                FontSize="34"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center" />
+
+                            <Label
+                                Text="{Binding VersionText}"
+                                TextColor="#CBD5E1"
+                                FontSize="13"
+                                HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+
+                        <Label
+                            Text="Rüzgar; anlık hava durumu, saatlik akış, haftalık tahmin, favori şehirler ve günlük analizleri tek ekranda sade ve premium bir deneyimle sunmak için geliştirildi."
+                            TextColor="#DDEBFF"
+                            FontSize="15"
+                            LineHeight="1.25"
+                            HorizontalTextAlignment="Center" />
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Özellikler -->
+                <Label
+                    Text="Öne çıkanlar"
+                    TextColor="White"
+                    FontSize="19"
+                    FontAttributes="Bold"
+                    Margin="2,8,0,0" />
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Border Padding="16" Stroke="#35FFFFFF" StrokeThickness="1" BackgroundColor="#18FFFFFF">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="28" />
+                        </Border.StrokeShape>
+
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Label Text="☁️" FontSize="25" VerticalOptions="Start" />
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                <Label Text="Canlı hava durumu" TextColor="White" FontSize="15" FontAttributes="Bold" />
+                                <Label Text="Seçtiğin şehir için anlık sıcaklık, hissedilen değer, nem, rüzgar ve hava açıklamasını gösterir." TextColor="#D6E2F0" FontSize="13" LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+
+                    <Border Padding="16" Stroke="#35FFFFFF" StrokeThickness="1" BackgroundColor="#18FFFFFF">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="28" />
+                        </Border.StrokeShape>
+
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Label Text="★" FontSize="25" TextColor="#FBBF24" VerticalOptions="Start" />
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                <Label Text="Favori şehirler" TextColor="White" FontSize="15" FontAttributes="Bold" />
+                                <Label Text="Favori şehirlerini mini hava kartlarıyla hızlıca takip edebilirsin." TextColor="#D6E2F0" FontSize="13" LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+
+                    <Border Padding="16" Stroke="#35FFFFFF" StrokeThickness="1" BackgroundColor="#18FFFFFF">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="28" />
+                        </Border.StrokeShape>
+
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Label Text="✦" FontSize="25" TextColor="#60A5FA" VerticalOptions="Start" />
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                <Label Text="Günlük analiz" TextColor="White" FontSize="15" FontAttributes="Bold" />
+                                <Label Text="Şemsiye, kıyafet, UV, rüzgar ve gün planı önerileriyle havayı sadece göstermeyi değil yorumlamayı hedefler." TextColor="#D6E2F0" FontSize="13" LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+
+                    <Border Padding="16" Stroke="#35FFFFFF" StrokeThickness="1" BackgroundColor="#18FFFFFF">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="28" />
+                        </Border.StrokeShape>
+
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Label Text="📅" FontSize="25" VerticalOptions="Start" />
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                <Label Text="Saatlik ve haftalık tahmin" TextColor="White" FontSize="15" FontAttributes="Bold" />
+                                <Label Text="12 saatlik akış ve 7 günlük görünüm ile gününü daha rahat planlamana yardımcı olur." TextColor="#D6E2F0" FontSize="13" LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+
+                </VerticalStackLayout>
+
+                <!-- Bilgi kartları -->
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+
+                    <Border Padding="17" Stroke="#35FFFFFF" StrokeThickness="1" BackgroundColor="#20FFFFFF">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="30" />
+                        </Border.StrokeShape>
+
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Platform" TextColor="#CBD5E1" FontSize="12" />
+                            <Label Text="{Binding PlatformText}" TextColor="White" FontSize="18" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="1" Padding="17" Stroke="#35FFFFFF" StrokeThickness="1" BackgroundColor="#20FFFFFF">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="30" />
+                        </Border.StrokeShape>
+
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Geliştirici" TextColor="#CBD5E1" FontSize="12" />
+                            <Label Text="Yusuf Arda Yılmaz" TextColor="White" FontSize="18" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                </Grid>
+
+                <!-- Not -->
+                <Border
+                    Padding="17"
+                    Stroke="#35FFFFFF"
+                    StrokeThickness="1"
+                    BackgroundColor="#18FFFFFF">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="30" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label
+                            Text="Not"
+                            TextColor="#CBD5E1"
+                            FontSize="12" />
+
+                        <Label
+                            Text="Hava verileri internet bağlantısı gerektirir. Sonuçlar tahmin amaçlıdır; önemli kararlar için resmi meteoroloji kaynakları da kontrol edilmelidir."
+                            TextColor="White"
+                            FontSize="13"
+                            LineBreakMode="WordWrap" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Tanıtımı tekrar göster -->
+                <Border
+                    x:Name="ShowOnboardingButton"
+                    HeightRequest="56"
+                    StrokeThickness="0"
+                    Margin="0,4,0,0">
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ShowOnboardingButton_Tapped" />
+                    </Border.GestureRecognizers>
+
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#60A5FA" Offset="0.0" />
+                            <GradientStop Color="#2563EB" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="28" />
+                    </Border.StrokeShape>
+
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="#80000000"
+                            Offset="0,12"
+                            Radius="26"
+                            Opacity="0.34" />
+                    </Border.Shadow>
+
+                    <Grid
+                        ColumnDefinitions="Auto,*"
+                        ColumnSpacing="10"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+
+                        <Label
+                            Text="↻"
+                            TextColor="White"
+                            FontSize="22"
+                            FontAttributes="Bold"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Grid.Column="1"
+                            Text="Tanıtımı tekrar göster"
+                            TextColor="White"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,1865 @@
+﻿<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Ruzgar.Controls"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Class="Ruzgar.MainPage"
+    BackgroundColor="#020617">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="{Binding Weather.BackgroundStartColor}" Offset="0.0" />
+            <GradientStop Color="{Binding Weather.BackgroundMiddleColor}" Offset="0.45" />
+            <GradientStop Color="{Binding Weather.BackgroundEndColor}" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid>
+
+        <controls:AtmosphereView
+            WeatherCode="{Binding Weather.WeatherCode}"
+            AccentColor="{Binding Weather.AccentColor}"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            Opacity="0.9" />
+
+        <!-- Arka plan ışık lekeleri -->
+        <Border
+            WidthRequest="280"
+            HeightRequest="280"
+            Margin="-120,-90,0,0"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Opacity="0.42"
+            StrokeThickness="0"
+            InputTransparent="True">
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#66FFFFFF" Offset="0.0" />
+                    <GradientStop Color="#00FFFFFF" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="160" />
+            </Border.StrokeShape>
+        </Border>
+
+        <Border
+            WidthRequest="260"
+            HeightRequest="260"
+            Margin="0,220,-130,0"
+            HorizontalOptions="End"
+            VerticalOptions="Start"
+            Opacity="0.24"
+            StrokeThickness="0"
+            InputTransparent="True">
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="{Binding Weather.AccentColor}" Offset="0.0" />
+                    <GradientStop Color="#00FFFFFF" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="150" />
+            </Border.StrokeShape>
+        </Border>
+        <!-- Hava durumuna göre arka plan efektleri -->
+        <Grid
+    InputTransparent="True"
+    IsClippedToBounds="True">
+
+            <!-- Güneşli hava efekti -->
+            <Grid IsVisible="{Binding Weather.IsSunnyEffectVisible}">
+                <Border
+            WidthRequest="260"
+            HeightRequest="260"
+            Margin="0,40,-90,0"
+            HorizontalOptions="End"
+            VerticalOptions="Start"
+            Opacity="0.26"
+            StrokeThickness="0">
+
+                    <Border.Background>
+                        <RadialGradientBrush Center="0.5,0.5" Radius="0.78">
+                            <GradientStop Color="#FBBF24" Offset="0.0" />
+                            <GradientStop Color="#66FDE68A" Offset="0.45" />
+                            <GradientStop Color="#00FFFFFF" Offset="1.0" />
+                        </RadialGradientBrush>
+                    </Border.Background>
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="150" />
+                    </Border.StrokeShape>
+                </Border>
+
+                <Border
+            WidthRequest="130"
+            HeightRequest="130"
+            Margin="0,90,24,0"
+            HorizontalOptions="End"
+            VerticalOptions="Start"
+            Opacity="0.18"
+            StrokeThickness="0"
+            BackgroundColor="#FEF3C7">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="70" />
+                    </Border.StrokeShape>
+                </Border>
+            </Grid>
+
+            <!-- Bulutlu hava efekti -->
+            <Grid IsVisible="{Binding Weather.IsCloudEffectVisible}">
+                <Border
+            WidthRequest="190"
+            HeightRequest="82"
+            Margin="-40,150,0,0"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Opacity="0.13"
+            StrokeThickness="0"
+            BackgroundColor="#E2E8F0">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="44" />
+                    </Border.StrokeShape>
+                </Border>
+
+                <Border
+            WidthRequest="150"
+            HeightRequest="66"
+            Margin="48,195,0,0"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Opacity="0.10"
+            StrokeThickness="0"
+            BackgroundColor="#FFFFFF">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="36" />
+                    </Border.StrokeShape>
+                </Border>
+
+                <Border
+            WidthRequest="220"
+            HeightRequest="88"
+            Margin="0,330,-70,0"
+            HorizontalOptions="End"
+            VerticalOptions="Start"
+            Opacity="0.11"
+            StrokeThickness="0"
+            BackgroundColor="#CBD5E1">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="48" />
+                    </Border.StrokeShape>
+                </Border>
+            </Grid>
+
+            <!-- Yağmurlu hava efekti -->
+            <Grid IsVisible="{Binding Weather.IsRainEffectVisible}">
+                <BoxView
+            WidthRequest="2"
+            HeightRequest="58"
+            Color="#BFE7FF"
+            Opacity="0.22"
+            Rotation="18"
+            Margin="38,120,0,0"
+            HorizontalOptions="Start"
+            VerticalOptions="Start" />
+
+                <BoxView
+            WidthRequest="2"
+            HeightRequest="74"
+            Color="#BFE7FF"
+            Opacity="0.18"
+            Rotation="18"
+            Margin="112,210,0,0"
+            HorizontalOptions="Start"
+            VerticalOptions="Start" />
+
+                <BoxView
+            WidthRequest="2"
+            HeightRequest="66"
+            Color="#BFE7FF"
+            Opacity="0.20"
+            Rotation="18"
+            Margin="0,140,78,0"
+            HorizontalOptions="End"
+            VerticalOptions="Start" />
+
+                <BoxView
+            WidthRequest="2"
+            HeightRequest="86"
+            Color="#BFE7FF"
+            Opacity="0.15"
+            Rotation="18"
+            Margin="0,315,36,0"
+            HorizontalOptions="End"
+            VerticalOptions="Start" />
+
+                <BoxView
+            WidthRequest="2"
+            HeightRequest="64"
+            Color="#BFE7FF"
+            Opacity="0.16"
+            Rotation="18"
+            Margin="68,430,0,0"
+            HorizontalOptions="Start"
+            VerticalOptions="Start" />
+            </Grid>
+
+            <!-- Karlı hava efekti -->
+            <Grid IsVisible="{Binding Weather.IsSnowEffectVisible}">
+                <Label
+            Text="❄"
+            TextColor="#E0F2FE"
+            FontSize="23"
+            Opacity="0.24"
+            Margin="34,130,0,0"
+            HorizontalOptions="Start"
+            VerticalOptions="Start" />
+
+                <Label
+            Text="❄"
+            TextColor="#FFFFFF"
+            FontSize="17"
+            Opacity="0.20"
+            Margin="0,210,64,0"
+            HorizontalOptions="End"
+            VerticalOptions="Start" />
+
+                <Label
+            Text="❄"
+            TextColor="#E0F2FE"
+            FontSize="20"
+            Opacity="0.18"
+            Margin="86,350,0,0"
+            HorizontalOptions="Start"
+            VerticalOptions="Start" />
+
+                <Label
+            Text="❄"
+            TextColor="#FFFFFF"
+            FontSize="26"
+            Opacity="0.14"
+            Margin="0,450,38,0"
+            HorizontalOptions="End"
+            VerticalOptions="Start" />
+            </Grid>
+
+            <!-- Sisli hava efekti -->
+            <Grid IsVisible="{Binding Weather.IsFogEffectVisible}">
+                <Border
+            HeightRequest="18"
+            Margin="-60,150,-40,0"
+            VerticalOptions="Start"
+            Opacity="0.14"
+            StrokeThickness="0"
+            BackgroundColor="#E2E8F0">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="9" />
+                    </Border.StrokeShape>
+                </Border>
+
+                <Border
+            HeightRequest="14"
+            Margin="40,230,-80,0"
+            VerticalOptions="Start"
+            Opacity="0.11"
+            StrokeThickness="0"
+            BackgroundColor="#FFFFFF">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="7" />
+                    </Border.StrokeShape>
+                </Border>
+
+                <Border
+            HeightRequest="16"
+            Margin="-90,340,60,0"
+            VerticalOptions="Start"
+            Opacity="0.12"
+            StrokeThickness="0"
+            BackgroundColor="#CBD5E1">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8" />
+                    </Border.StrokeShape>
+                </Border>
+            </Grid>
+
+            <!-- Fırtına efekti -->
+            <Grid IsVisible="{Binding Weather.IsStormEffectVisible}">
+                <Border
+            WidthRequest="280"
+            HeightRequest="280"
+            Margin="0,60,-120,0"
+            HorizontalOptions="End"
+            VerticalOptions="Start"
+            Opacity="0.22"
+            StrokeThickness="0">
+
+                    <Border.Background>
+                        <RadialGradientBrush Center="0.5,0.5" Radius="0.78">
+                            <GradientStop Color="#C084FC" Offset="0.0" />
+                            <GradientStop Color="#6D28D9" Offset="0.45" />
+                            <GradientStop Color="#00FFFFFF" Offset="1.0" />
+                        </RadialGradientBrush>
+                    </Border.Background>
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="160" />
+                    </Border.StrokeShape>
+                </Border>
+
+                <Label
+            Text="⚡"
+            TextColor="#FDE68A"
+            FontSize="48"
+            Opacity="0.22"
+            Margin="0,155,56,0"
+            HorizontalOptions="End"
+            VerticalOptions="Start" />
+            </Grid>
+
+        </Grid>
+        <ScrollView>
+            <VerticalStackLayout Padding="24,44,24,28" Spacing="18">
+
+                <!-- Üst bar -->
+                <Grid
+    x:Name="TopBar"
+    ColumnDefinitions="*,Auto,Auto,Auto"
+    Opacity="0"
+    TranslationY="-18">
+
+                    <VerticalStackLayout Spacing="2">
+                        <Label
+            Text="Rüzgar"
+            TextColor="White"
+            FontSize="29"
+            FontAttributes="Bold" />
+
+                        <HorizontalStackLayout Spacing="6">
+                            <Label
+                Text="●"
+                TextColor="{Binding Weather.AccentColor}"
+                FontSize="10"
+                VerticalOptions="Center" />
+
+                            <Label
+                Text="Canlı hava durumu"
+                TextColor="#DDE7F5"
+                FontSize="13"
+                VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                    <!-- Yenile -->
+                    <Border
+        x:Name="RefreshButton"
+        Grid.Column="1"
+        WidthRequest="52"
+        HeightRequest="52"
+        Stroke="#55FFFFFF"
+        StrokeThickness="1"
+        Padding="0">
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="RefreshButton_Tapped" />
+                        </Border.GestureRecognizers>
+
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#4AFFFFFF" Offset="0.0" />
+                                <GradientStop Color="#18FFFFFF" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="26" />
+                        </Border.StrokeShape>
+
+                        <Border.Shadow>
+                            <Shadow
+                Brush="#90000000"
+                Offset="0,10"
+                Radius="22"
+                Opacity="0.38" />
+                        </Border.Shadow>
+
+                        <Label
+            x:Name="RefreshIcon"
+            Text="↻"
+            TextColor="White"
+            FontSize="26"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+                    </Border>
+
+                    <!-- Hakkında -->
+                    <Border
+        x:Name="AboutButton"
+        Grid.Column="2"
+        WidthRequest="52"
+        HeightRequest="52"
+        Margin="10,0,0,0"
+        Stroke="#55FFFFFF"
+        StrokeThickness="1"
+        Padding="0">
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AboutButton_Tapped" />
+                        </Border.GestureRecognizers>
+
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#4AFFFFFF" Offset="0.0" />
+                                <GradientStop Color="#18FFFFFF" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="26" />
+                        </Border.StrokeShape>
+
+                        <Border.Shadow>
+                            <Shadow
+                Brush="#90000000"
+                Offset="0,10"
+                Radius="22"
+                Opacity="0.38" />
+                        </Border.Shadow>
+
+                        <Label
+            x:Name="AboutIcon"
+            Text="i"
+            TextColor="White"
+            FontSize="24"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+                    </Border>
+
+                    <!-- Ayarlar -->
+                    <Border
+        x:Name="SettingsButton"
+        Grid.Column="3"
+        WidthRequest="52"
+        HeightRequest="52"
+        Margin="10,0,0,0"
+        Stroke="#55FFFFFF"
+        StrokeThickness="1"
+        Padding="0">
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SettingsButton_Tapped" />
+                        </Border.GestureRecognizers>
+
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#4AFFFFFF" Offset="0.0" />
+                                <GradientStop Color="#18FFFFFF" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="26" />
+                        </Border.StrokeShape>
+
+                        <Border.Shadow>
+                            <Shadow
+                Brush="#90000000"
+                Offset="0,10"
+                Radius="22"
+                Opacity="0.38" />
+                        </Border.Shadow>
+
+                        <Label
+            x:Name="SettingsIcon"
+            Text="⚙"
+            TextColor="White"
+            FontSize="23"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+                    </Border>
+                </Grid>
+
+                <!-- Arama alanı -->
+                <Grid
+                    x:Name="SearchArea"
+                    RowDefinitions="Auto,Auto"
+                    Opacity="0"
+                    TranslationY="18">
+
+                    <Border
+                        Stroke="#3DFFFFFF"
+                        StrokeThickness="1"
+                        Padding="15,13">
+
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#30FFFFFF" Offset="0.0" />
+                                <GradientStop Color="#12000000" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="30" />
+                        </Border.StrokeShape>
+
+                        <Border.Shadow>
+                            <Shadow
+                                Brush="#60000000"
+                                Offset="0,8"
+                                Radius="20"
+                                Opacity="0.28" />
+                        </Border.Shadow>
+
+                        <Grid ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="10">
+
+                            <Label
+                                Text="⌕"
+                                TextColor="#E2E8F0"
+                                FontSize="20"
+                                VerticalOptions="Center" />
+
+                            <Entry
+                                Grid.Column="1"
+                                Text="{Binding SearchText}"
+                                Focused="SearchEntry_Focused"
+                                Placeholder="Şehir ara..."
+                                PlaceholderColor="#BFD0E6"
+                                TextColor="White"
+                                FontSize="15"
+                                BackgroundColor="Transparent"
+                                ReturnCommand="{Binding SearchCommand}"
+                                ClearButtonVisibility="WhileEditing" />
+
+                            <Border
+                                Grid.Column="2"
+                                WidthRequest="46"
+                                HeightRequest="42"
+                                Stroke="#33FFFFFF"
+                                StrokeThickness="1"
+                                Padding="0">
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SearchCommand}" />
+                                </Border.GestureRecognizers>
+
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#38FFFFFF" Offset="0.0" />
+                                        <GradientStop Color="#18FFFFFF" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="21" />
+                                </Border.StrokeShape>
+
+                                <Label
+                                    Text="Ara"
+                                    TextColor="White"
+                                    FontSize="12"
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
+                            </Border>
+
+                            <Border
+                                Grid.Column="3"
+                                WidthRequest="42"
+                                HeightRequest="42"
+                                Stroke="#33FFFFFF"
+                                StrokeThickness="1"
+                                Padding="0">
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding UseMyLocationCommand}" />
+                                </Border.GestureRecognizers>
+
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#38FFFFFF" Offset="0.0" />
+                                        <GradientStop Color="#18FFFFFF" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="21" />
+                                </Border.StrokeShape>
+
+                                <Label
+                                    Text="⌖"
+                                    TextColor="White"
+                                    FontSize="21"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
+                            </Border>
+
+                        </Grid>
+                    </Border>
+
+                    <!-- Arama sonuçları -->
+                    <Border
+                        Grid.Row="1"
+                        IsVisible="{Binding HasCityResults}"
+                        BackgroundColor="#E60F172A"
+                        Stroke="#44FFFFFF"
+                        StrokeThickness="1"
+                        Padding="8"
+                        Margin="0,10,0,0">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="26" />
+                        </Border.StrokeShape>
+
+                        <VerticalStackLayout
+                            BindableLayout.ItemsSource="{Binding CityResults}"
+                            Spacing="4">
+
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Border
+                                        Padding="13"
+                                        BackgroundColor="#12FFFFFF"
+                                        StrokeThickness="0">
+
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer
+        Tapped="CityResultCard_Tapped"
+        CommandParameter="{Binding .}" />
+                                        </Border.GestureRecognizers>
+
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="19" />
+                                        </Border.StrokeShape>
+
+                                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                            <Label
+                                                Text="📍"
+                                                FontSize="17"
+                                                VerticalOptions="Center" />
+
+                                            <Label
+                                                Grid.Column="1"
+                                                Text="{Binding DisplayName}"
+                                                TextColor="White"
+                                                FontSize="14"
+                                                VerticalOptions="Center" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Arama geçmişi -->
+                    <Border
+    Grid.Row="1"
+    IsVisible="{Binding ShowSearchHistory}"
+    BackgroundColor="#E60F172A"
+    Stroke="#44FFFFFF"
+    StrokeThickness="1"
+    Padding="8"
+    Margin="0,10,0,0">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="26" />
+                        </Border.StrokeShape>
+
+                        <VerticalStackLayout Spacing="8">
+
+                            <Grid ColumnDefinitions="*,Auto" Padding="5,2,5,0">
+                                <Label
+                Text="Son arananlar"
+                TextColor="White"
+                FontSize="14"
+                FontAttributes="Bold"
+                VerticalOptions="Center" />
+
+                                <Label
+                Grid.Column="1"
+                Text="Temizle"
+                TextColor="#CBD5E1"
+                FontSize="12"
+                VerticalOptions="Center">
+
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ClearSearchHistoryCommand}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+
+                            <VerticalStackLayout
+            BindableLayout.ItemsSource="{Binding SearchHistoryCities}"
+            Spacing="4">
+
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border
+                        Padding="13"
+                        BackgroundColor="#12FFFFFF"
+                        StrokeThickness="0">
+
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                Tapped="SearchHistoryCard_Tapped"
+                                CommandParameter="{Binding .}" />
+                                            </Border.GestureRecognizers>
+
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="19" />
+                                            </Border.StrokeShape>
+
+                                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                                                <Label
+                                Text="🕘"
+                                FontSize="16"
+                                VerticalOptions="Center" />
+
+                                                <VerticalStackLayout Grid.Column="1" Spacing="1">
+                                                    <Label
+                                    Text="{Binding Name}"
+                                    TextColor="White"
+                                    FontSize="14"
+                                    FontAttributes="Bold"
+                                    LineBreakMode="TailTruncation" />
+
+                                                    <Label
+                                    Text="{Binding SubText}"
+                                    TextColor="#CBD5E1"
+                                    FontSize="11"
+                                    LineBreakMode="TailTruncation" />
+                                                </VerticalStackLayout>
+
+                                                <Label
+                                Grid.Column="2"
+                                Text="›"
+                                TextColor="#CBD5E1"
+                                FontSize="22"
+                                VerticalOptions="Center" />
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+                <!-- Favoriler -->
+                <VerticalStackLayout
+    x:Name="FavoriteArea"
+    IsVisible="{Binding HasFavoriteCities}"
+    Opacity="1"
+    TranslationY="0"
+    Spacing="10">
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label
+            Text="Favori şehirler"
+            TextColor="White"
+            FontSize="18"
+            FontAttributes="Bold"
+            Margin="2,0,0,0" />
+
+                        <Label
+            Grid.Column="1"
+            Text="Mini hava"
+            TextColor="#CBD5E1"
+            FontSize="12"
+            VerticalOptions="Center" />
+                    </Grid>
+
+                    <CollectionView
+        ItemsSource="{Binding FavoriteCities}"
+        ItemsLayout="HorizontalList"
+        HeightRequest="122"
+        HorizontalScrollBarVisibility="Never">
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                    WidthRequest="214"
+                    HeightRequest="108"
+                    Margin="0,0,18,0"
+                    Padding="13"
+                    Stroke="#42FFFFFF"
+                    StrokeThickness="1">
+
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SelectFavoriteCityCommand}"
+                            CommandParameter="{Binding .}" />
+                                    </Border.GestureRecognizers>
+
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#34FFFFFF" Offset="0.0" />
+                                            <GradientStop Color="#12000000" Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="28" />
+                                    </Border.StrokeShape>
+
+                                    <Border.Shadow>
+                                        <Shadow
+                            Brush="#60000000"
+                            Offset="0,9"
+                            Radius="20"
+                            Opacity="0.28" />
+                                    </Border.Shadow>
+
+                                    <Grid RowDefinitions="Auto,*" RowSpacing="8">
+
+                                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+
+                                            <VerticalStackLayout Spacing="2">
+                                                <Label
+                                    Text="{Binding Name}"
+                                    TextColor="White"
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    LineBreakMode="TailTruncation" />
+
+                                                <Label
+                                    Text="{Binding SubText}"
+                                    TextColor="#CBD5E1"
+                                    FontSize="11"
+                                    LineBreakMode="TailTruncation" />
+                                            </VerticalStackLayout>
+
+                                            <Button
+                                Grid.Column="1"
+                                Text="×"
+                                FontSize="17"
+                                TextColor="White"
+                                BackgroundColor="#20FFFFFF"
+                                Padding="0"
+                                CornerRadius="15"
+                                WidthRequest="30"
+                                HeightRequest="30"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.RemoveFavoriteCityCommand}"
+                                CommandParameter="{Binding .}" />
+
+                                        </Grid>
+
+                                        <Grid
+                            Grid.Row="1"
+                            ColumnDefinitions="Auto,*,Auto"
+                            ColumnSpacing="10"
+                            VerticalOptions="Center">
+
+                                            <Border
+                                WidthRequest="46"
+                                HeightRequest="46"
+                                Stroke="#22FFFFFF"
+                                StrokeThickness="1"
+                                BackgroundColor="#18FFFFFF">
+
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle CornerRadius="23" />
+                                                </Border.StrokeShape>
+
+                                                <Label
+                                    Text="{Binding MiniIcon}"
+                                    FontSize="25"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
+                                            </Border>
+
+                                            <VerticalStackLayout
+                                Grid.Column="1"
+                                Spacing="1"
+                                VerticalOptions="Center">
+
+                                                <Label
+                                    Text="{Binding MiniDescription}"
+                                    TextColor="#E2E8F0"
+                                    FontSize="12"
+                                    FontAttributes="Bold"
+                                    LineBreakMode="TailTruncation" />
+
+                                                <Label
+                                    Text="{Binding MiniUpdatedText, StringFormat='Güncellendi {0}'}"
+                                    TextColor="#94A3B8"
+                                    FontSize="10"
+                                    LineBreakMode="TailTruncation" />
+                                            </VerticalStackLayout>
+
+                                            <Grid
+                                Grid.Column="2"
+                                WidthRequest="52"
+                                VerticalOptions="Center">
+
+                                                <Label
+                                    Text="{Binding MiniTemperatureText}"
+                                    TextColor="White"
+                                    FontSize="20"
+                                    FontAttributes="Bold"
+                                    HorizontalTextAlignment="End"
+                                    VerticalOptions="Center" />
+
+                                                <ActivityIndicator
+                                    IsRunning="{Binding IsMiniWeatherLoading}"
+                                    IsVisible="{Binding IsMiniWeatherLoading}"
+                                    Color="White"
+                                    WidthRequest="22"
+                                    HeightRequest="22"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center" />
+                                            </Grid>
+
+                                        </Grid>
+
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+                <!-- Ana hava kartı -->
+                <Border
+    x:Name="MainWeatherCard"
+    Padding="24"
+    Stroke="#55FFFFFF"
+    StrokeThickness="1"
+    Opacity="0"
+    Scale="0.96"
+    TranslationY="26">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="MainWeatherCard_Tapped" />
+                    </Border.GestureRecognizers>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="{Binding Weather.CardStartColor}" Offset="0.0" />
+                            <GradientStop Color="{Binding Weather.CardEndColor}" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="44" />
+                    </Border.StrokeShape>
+
+                    <Border.Shadow>
+                        <Shadow
+            Brush="#B0000000"
+            Offset="0,22"
+            Radius="42"
+            Opacity="0.68" />
+                    </Border.Shadow>
+
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="16">
+
+                        <!-- Şehir + ikon -->
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
+
+                            <VerticalStackLayout Spacing="5">
+                                <Label
+                    Text="{Binding Weather.City}"
+                    FontSize="30"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    LineBreakMode="TailTruncation" />
+
+                                <HorizontalStackLayout Spacing="7">
+                                    <Border
+                        WidthRequest="8"
+                        HeightRequest="8"
+                        BackgroundColor="{Binding Weather.AccentColor}"
+                        StrokeThickness="0"
+                        VerticalOptions="Center">
+
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="4" />
+                                        </Border.StrokeShape>
+                                    </Border>
+
+                                    <Label
+                        Text="{Binding Weather.UpdatedText}"
+                        FontSize="12"
+                        TextColor="#D6E2F0"
+                        VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+
+                            <controls:WeatherBadgeView
+                                Grid.Column="1"
+                                WidthRequest="96"
+                                HeightRequest="96"
+                                WeatherCode="{Binding Weather.WeatherCode}"
+                                AccentColor="{Binding Weather.AccentColor}"
+                                HorizontalOptions="End"
+                                VerticalOptions="Start" />
+                        </Grid>
+
+                        <!-- Sıcaklık -->
+                        <Grid Grid.Row="1" ColumnDefinitions="*,Auto" ColumnSpacing="12">
+
+                            <VerticalStackLayout Spacing="-10">
+                                <Label
+                    Text="{Binding Weather.TemperatureText}"
+                    FontSize="108"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    Margin="-4,0,0,0" />
+
+                                <Label
+                    Text="{Binding Weather.Description}"
+                    FontSize="23"
+                    FontAttributes="Bold"
+                    TextColor="{Binding Weather.AccentColor}" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout
+                Grid.Column="1"
+                Spacing="10"
+                VerticalOptions="Center">
+
+                                <Border
+                    Padding="12,9"
+                    Stroke="#24FFFFFF"
+                    StrokeThickness="1"
+                    BackgroundColor="#1CFFFFFF">
+
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="18" />
+                                    </Border.StrokeShape>
+
+                                    <VerticalStackLayout Spacing="2">
+                                        <Label
+                            Text="Nem"
+                            TextColor="#CBD5E1"
+                            FontSize="11"
+                            HorizontalTextAlignment="Center" />
+
+                                        <Label
+                            Text="{Binding Weather.Humidity, StringFormat='%{0}'}"
+                            TextColor="White"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center" />
+                                    </VerticalStackLayout>
+                                </Border>
+
+                                <Border
+                    Padding="12,9"
+                    Stroke="#24FFFFFF"
+                    StrokeThickness="1"
+                    BackgroundColor="#1CFFFFFF">
+
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="18" />
+                                    </Border.StrokeShape>
+
+                                    <VerticalStackLayout Spacing="2">
+                                        <Label
+                            Text="Rüzgar"
+                            TextColor="#CBD5E1"
+                            FontSize="11"
+                            HorizontalTextAlignment="Center" />
+
+                                        <Label
+                            Text="{Binding Weather.WindSpeed, StringFormat='{0} km/h'}"
+                            TextColor="White"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center" />
+                                    </VerticalStackLayout>
+                                </Border>
+
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <!-- Hissedilen + favori -->
+                        <Grid
+            Grid.Row="2"
+            ColumnDefinitions="*,Auto"
+            ColumnSpacing="12">
+
+                            <Border
+                Padding="14"
+                Stroke="#28FFFFFF"
+                StrokeThickness="1"
+                BackgroundColor="#20FFFFFF">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="24" />
+                                </Border.StrokeShape>
+
+                                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                    <Label
+                        Text="🌡️"
+                        FontSize="17"
+                        VerticalOptions="Center" />
+
+                                    <VerticalStackLayout Grid.Column="1" Spacing="1">
+                                        <Label
+                            Text="Hissedilen"
+                            TextColor="#CBD5E1"
+                            FontSize="11" />
+
+                                        <Label
+                            Text="{Binding Weather.FeelsLikeText}"
+                            TextColor="White"
+                            FontSize="15"
+                            FontAttributes="Bold" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
+
+                            <Border
+                x:Name="FavoriteActionButton"
+                Grid.Column="1"
+                Padding="14"
+                Stroke="#28FFFFFF"
+                StrokeThickness="1"
+                BackgroundColor="#20FFFFFF">
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="FavoriteActionButton_Tapped" />
+                                </Border.GestureRecognizers>
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="24" />
+                                </Border.StrokeShape>
+
+                                <HorizontalStackLayout Spacing="8">
+                                    <Label
+                        Text="{Binding FavoriteButtonText}"
+                        TextColor="#FBBF24"
+                        FontSize="20"
+                        VerticalOptions="Center" />
+
+                                    <Label
+                        Text="{Binding FavoriteActionText}"
+                        TextColor="White"
+                        FontSize="13"
+                        VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                            </Border>
+
+                        </Grid>
+
+                        <!-- Premium özet şeridi -->
+                        <Grid
+            Grid.Row="3"
+            ColumnDefinitions="*,*,*"
+            ColumnSpacing="10">
+
+                            <Border
+                Padding="12"
+                Stroke="#22FFFFFF"
+                StrokeThickness="1"
+                BackgroundColor="#16FFFFFF">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="22" />
+                                </Border.StrokeShape>
+
+                                <VerticalStackLayout Spacing="3">
+                                    <Label
+                        Text="Yağış"
+                        TextColor="#CBD5E1"
+                        FontSize="11"
+                        HorizontalTextAlignment="Center" />
+
+                                    <Label
+                        Text="{Binding Weather.PrecipitationProbability, StringFormat='{0}%'}"
+                        TextColor="White"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center" />
+                                </VerticalStackLayout>
+                            </Border>
+
+                            <Border
+                Grid.Column="1"
+                Padding="12"
+                Stroke="#22FFFFFF"
+                StrokeThickness="1"
+                BackgroundColor="#16FFFFFF">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="22" />
+                                </Border.StrokeShape>
+
+                                <VerticalStackLayout Spacing="3">
+                                    <Label
+                        Text="UV"
+                        TextColor="#CBD5E1"
+                        FontSize="11"
+                        HorizontalTextAlignment="Center" />
+
+                                    <Label
+                        Text="{Binding Weather.UvIndex, StringFormat='{0:0.#}'}"
+                        TextColor="White"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center" />
+                                </VerticalStackLayout>
+                            </Border>
+
+                            <Border
+                Grid.Column="2"
+                Padding="12"
+                Stroke="#22FFFFFF"
+                StrokeThickness="1"
+                BackgroundColor="#16FFFFFF">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="22" />
+                                </Border.StrokeShape>
+
+                                <VerticalStackLayout Spacing="3">
+                                    <Label
+                        Text="Görüş"
+                        TextColor="#CBD5E1"
+                        FontSize="11"
+                        HorizontalTextAlignment="Center" />
+
+                                    <Label
+                        Text="{Binding Weather.Visibility, StringFormat='{0:0.#} km'}"
+                        TextColor="White"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center" />
+                                </VerticalStackLayout>
+                            </Border>
+
+                        </Grid>
+
+                        <!-- Rüzgar yorumu -->
+                        <Border
+            Grid.Row="4"
+            BackgroundColor="#18FFFFFF"
+            Stroke="#22FFFFFF"
+            StrokeThickness="1"
+            Padding="15">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="26" />
+                            </Border.StrokeShape>
+
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                <Border
+                    WidthRequest="42"
+                    HeightRequest="42"
+                    StrokeThickness="0"
+                    BackgroundColor="#20FFFFFF"
+                    VerticalOptions="Start">
+
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="21" />
+                                    </Border.StrokeShape>
+
+                                    <Label
+                        Text="〰"
+                        TextColor="{Binding Weather.AccentColor}"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                                </Border>
+
+                                <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                    <Label
+                        Text="Rüzgar yorumu"
+                        TextColor="#D6E2F0"
+                        FontSize="12" />
+
+                                    <Label
+                        Text="{Binding Weather.MoodText}"
+                        TextColor="White"
+                        FontSize="14"
+                        LineBreakMode="WordWrap" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+
+                        <ActivityIndicator
+            Grid.Row="5"
+            IsRunning="{Binding IsLoading}"
+            IsVisible="{Binding IsLoading}"
+            Color="White"
+            HorizontalOptions="Center" />
+
+                        <Label
+            Grid.Row="5"
+            Text="{Binding ErrorMessage}"
+            FontSize="14"
+            TextColor="#FCA5A5"
+            HorizontalTextAlignment="Center" />
+
+                    </Grid>
+                </Border>
+
+                <!-- Saatlik tahmin -->
+                <Grid
+    x:Name="HourlyTitle"
+    ColumnDefinitions="*,Auto"
+    Opacity="0"
+    TranslationY="18"
+    Margin="2,8,0,0">
+
+                    <VerticalStackLayout Spacing="2">
+                        <Label
+            Text="Saatlik tahmin"
+            TextColor="White"
+            FontSize="19"
+            FontAttributes="Bold" />
+
+                        <Label
+            Text="Günün devamını hızlıca gör"
+            TextColor="#BFD0E6"
+            FontSize="12" />
+                    </VerticalStackLayout>
+
+                    <Border
+        Grid.Column="1"
+        Padding="11,7"
+        Stroke="#30FFFFFF"
+        StrokeThickness="1"
+        VerticalOptions="Center">
+
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#26FFFFFF" Offset="0.0" />
+                                <GradientStop Color="#10000000" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="18" />
+                        </Border.StrokeShape>
+
+                        <Label
+            Text="12 saat"
+            TextColor="#E2E8F0"
+            FontSize="12"
+            FontAttributes="Bold" />
+                    </Border>
+                </Grid>
+
+                <CollectionView
+    x:Name="HourlyList"
+    ItemsSource="{Binding Weather.HourlyForecasts}"
+    ItemsLayout="HorizontalList"
+    HeightRequest="152"
+    HorizontalScrollBarVisibility="Never"
+    Opacity="0"
+    TranslationY="18">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                WidthRequest="106"
+                HeightRequest="138"
+                Margin="0,0,22,0"
+                Padding="12"
+                Stroke="#42FFFFFF"
+                StrokeThickness="1">
+
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#36FFFFFF" Offset="0.0" />
+                                        <GradientStop Color="#14000000" Offset="0.62" />
+                                        <GradientStop Color="#08000000" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="32" />
+                                </Border.StrokeShape>
+
+                                <Border.Shadow>
+                                    <Shadow
+                        Brush="#65000000"
+                        Offset="0,10"
+                        Radius="20"
+                        Opacity="0.34" />
+                                </Border.Shadow>
+
+                                <Grid RowDefinitions="Auto,*,Auto,Auto" RowSpacing="6">
+
+                                    <Border
+                        Padding="8,4"
+                        HorizontalOptions="Center"
+                        Stroke="#22FFFFFF"
+                        StrokeThickness="1">
+
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#20FFFFFF" Offset="0.0" />
+                                                <GradientStop Color="#0A000000" Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="14" />
+                                        </Border.StrokeShape>
+
+                                        <Label
+                            Text="{Binding TimeText}"
+                            FontSize="12"
+                            TextColor="#E2E8F0"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center" />
+                                    </Border>
+
+                                    <Border
+                        Grid.Row="1"
+                        WidthRequest="46"
+                        HeightRequest="46"
+                        StrokeThickness="0"
+                        Padding="0"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#28FFFFFF" Offset="0.0" />
+                                                <GradientStop Color="#08FFFFFF" Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="23" />
+                                        </Border.StrokeShape>
+
+                                        <Label
+                            Text="{Binding Icon}"
+                            FontSize="29"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                                    </Border>
+
+                                    <Label
+                        Grid.Row="2"
+                        Text="{Binding TemperatureText}"
+                        FontSize="21"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        HorizontalTextAlignment="Center" />
+
+                                    <Border
+                        Grid.Row="3"
+                        Padding="7,3"
+                        Stroke="#22FFFFFF"
+                        StrokeThickness="1"
+                        BackgroundColor="#16FFFFFF"
+                        HorizontalOptions="Center">
+
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="13" />
+                                        </Border.StrokeShape>
+
+                                        <HorizontalStackLayout Spacing="3">
+                                            <Label
+                                Text="☔"
+                                FontSize="10"
+                                VerticalOptions="Center" />
+
+                                            <Label
+                                Text="{Binding PrecipitationText}"
+                                TextColor="#DDEBFF"
+                                FontSize="11"
+                                FontAttributes="Bold"
+                                VerticalOptions="Center" />
+                                        </HorizontalStackLayout>
+                                    </Border>
+
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Detay kartları -->
+                <Grid
+                    x:Name="DetailsTitle"
+                    ColumnDefinitions="*,Auto"
+                    Opacity="0"
+                    TranslationY="18"
+                    Margin="2,2,0,0">
+
+                    <Label
+                        Text="Hava detayları"
+                        TextColor="White"
+                        FontSize="19"
+                        FontAttributes="Bold" />
+
+                    <Label
+                        Grid.Column="1"
+                        Text="Anlık"
+                        TextColor="#CBD5E1"
+                        FontSize="12"
+                        VerticalOptions="Center" />
+                </Grid>
+
+                <Grid
+                    x:Name="MiniCards"
+                    ColumnDefinitions="*,*"
+                    RowDefinitions="Auto,Auto,Auto"
+                    ColumnSpacing="14"
+                    RowSpacing="14"
+                    Opacity="0"
+                    TranslationY="18">
+
+                    <Border
+                        Stroke="#35FFFFFF"
+                        StrokeThickness="1"
+                        Padding="17">
+
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#2AFFFFFF" Offset="0.0" />
+                                <GradientStop Color="#10000000" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="28" />
+                        </Border.StrokeShape>
+
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
+                            <Label
+                                Text="Nem"
+                                TextColor="#CBD5E1"
+                                FontSize="13" />
+
+                            <Label
+                                Grid.Column="1"
+                                Text="💧"
+                                FontSize="18" />
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding Weather.Humidity, StringFormat='%{0}'}"
+                                TextColor="White"
+                                FontSize="28"
+                                FontAttributes="Bold"
+                                Margin="0,8,0,0" />
+                        </Grid>
+                    </Border>
+
+                    <Border
+                        Grid.Column="1"
+                        Stroke="#35FFFFFF"
+                        StrokeThickness="1"
+                        Padding="17">
+
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#2AFFFFFF" Offset="0.0" />
+                                <GradientStop Color="#10000000" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="28" />
+                        </Border.StrokeShape>
+
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
+                            <Label
+                                Text="Rüzgar"
+                                TextColor="#CBD5E1"
+                                FontSize="13" />
+
+                            <Label
+                                Grid.Column="1"
+                                Text="🌬️"
+                                FontSize="18" />
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding Weather.WindSpeed, StringFormat='{0} km/h'}"
+                                TextColor="White"
+                                FontSize="26"
+                                FontAttributes="Bold"
+                                Margin="0,8,0,0" />
+                        </Grid>
+                    </Border>
+
+                    <Border
+                        Grid.Row="1"
+                        Stroke="#35FFFFFF"
+                        StrokeThickness="1"
+                        Padding="17">
+
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#2AFFFFFF" Offset="0.0" />
+                                <GradientStop Color="#10000000" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="28" />
+                        </Border.StrokeShape>
+
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
+                            <Label
+                                Text="Yağış"
+                                TextColor="#CBD5E1"
+                                FontSize="13" />
+
+                            <Label
+                                Grid.Column="1"
+                                Text="☔"
+                                FontSize="18" />
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding Weather.PrecipitationProbability, StringFormat='{0}%'}"
+                                TextColor="White"
+                                FontSize="28"
+                                FontAttributes="Bold"
+                                Margin="0,8,0,0" />
+                        </Grid>
+                    </Border>
+
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Stroke="#35FFFFFF"
+                        StrokeThickness="1"
+                        Padding="17">
+
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#2AFFFFFF" Offset="0.0" />
+                                <GradientStop Color="#10000000" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="28" />
+                        </Border.StrokeShape>
+
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
+                            <Label
+                                Text="UV"
+                                TextColor="#CBD5E1"
+                                FontSize="13" />
+
+                            <Label
+                                Grid.Column="1"
+                                Text="☀️"
+                                FontSize="18" />
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding Weather.UvIndex, StringFormat='{0:0.#}'}"
+                                TextColor="White"
+                                FontSize="28"
+                                FontAttributes="Bold"
+                                Margin="0,8,0,0" />
+                        </Grid>
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Stroke="#35FFFFFF"
+                        StrokeThickness="1"
+                        Padding="17">
+
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#2AFFFFFF" Offset="0.0" />
+                                <GradientStop Color="#10000000" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="28" />
+                        </Border.StrokeShape>
+
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
+                            <Label
+                                Text="Basınç"
+                                TextColor="#CBD5E1"
+                                FontSize="13" />
+
+                            <Label
+                                Grid.Column="1"
+                                Text="🧭"
+                                FontSize="18" />
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding Weather.Pressure, StringFormat='{0:0} hPa'}"
+                                TextColor="White"
+                                FontSize="24"
+                                FontAttributes="Bold"
+                                Margin="0,8,0,0" />
+                        </Grid>
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Stroke="#35FFFFFF"
+                        StrokeThickness="1"
+                        Padding="17">
+
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#2AFFFFFF" Offset="0.0" />
+                                <GradientStop Color="#10000000" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="28" />
+                        </Border.StrokeShape>
+
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
+                            <Label
+                                Text="Görüş"
+                                TextColor="#CBD5E1"
+                                FontSize="13" />
+
+                            <Label
+                                Grid.Column="1"
+                                Text="👁️"
+                                FontSize="18" />
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding Weather.Visibility, StringFormat='{0:0.#} km'}"
+                                TextColor="White"
+                                FontSize="24"
+                                FontAttributes="Bold"
+                                Margin="0,8,0,0" />
+                        </Grid>
+                    </Border>
+
+                </Grid>
+
+                <!-- 7 günlük tahmin -->
+                <Grid
+                    x:Name="DailyTitle"
+                    ColumnDefinitions="*,Auto"
+                    Opacity="0"
+                    TranslationY="18"
+                    Margin="2,8,0,0">
+
+                    <Label
+                        Text="7 günlük tahmin"
+                        TextColor="White"
+                        FontSize="19"
+                        FontAttributes="Bold" />
+
+                    <Label
+                        Grid.Column="1"
+                        Text="Haftalık"
+                        TextColor="#CBD5E1"
+                        FontSize="12"
+                        VerticalOptions="Center" />
+                </Grid>
+
+                <Border
+                    x:Name="DailyCard"
+                    Stroke="#35FFFFFF"
+                    StrokeThickness="1"
+                    Padding="8"
+                    Opacity="0"
+                    TranslationY="18">
+
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#2AFFFFFF" Offset="0.0" />
+                            <GradientStop Color="#10000000" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="32" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout
+                        BindableLayout.ItemsSource="{Binding Weather.DailyForecasts}"
+                        Spacing="4">
+
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    BackgroundColor="#12FFFFFF"
+                                    StrokeThickness="0"
+                                    Padding="13">
+
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="22" />
+                                    </Border.StrokeShape>
+
+                                    <Grid
+                                        ColumnDefinitions="*,Auto,Auto"
+                                        ColumnSpacing="14">
+
+                                        <Label
+                                            Text="{Binding DayText}"
+                                            TextColor="#F8FAFC"
+                                            FontSize="15"
+                                            FontAttributes="Bold"
+                                            VerticalOptions="Center" />
+
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="{Binding Icon}"
+                                            FontSize="24"
+                                            VerticalOptions="Center" />
+
+                                        <HorizontalStackLayout
+                                            Grid.Column="2"
+                                            Spacing="4"
+                                            VerticalOptions="Center">
+
+                                            <Label
+                                                Text="{Binding MaxTemperatureText}"
+                                                TextColor="White"
+                                                FontSize="16"
+                                                FontAttributes="Bold" />
+
+                                            <Label
+                                                Text="/"
+                                                TextColor="#94A3B8"
+                                                FontSize="16" />
+
+                                            <Label
+                                                Text="{Binding MinTemperatureText}"
+                                                TextColor="#CBD5E1"
+                                                FontSize="16" />
+
+                                        </HorizontalStackLayout>
+
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

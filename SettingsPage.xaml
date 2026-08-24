@@ -1,0 +1,499 @@
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Ruzgar.Controls"
+    x:Class="Ruzgar.SettingsPage"
+    BackgroundColor="#020617"
+    Shell.NavBarIsVisible="False">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#0F172A" Offset="0.0" />
+            <GradientStop Color="#020617" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid>
+
+        <controls:AtmosphereView
+            WeatherCode="45"
+            AccentColor="#60A5FA"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            Opacity="0.5" />
+
+        <Border
+            WidthRequest="260"
+            HeightRequest="260"
+            Margin="-120,-100,0,0"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Opacity="0.35"
+            StrokeThickness="0"
+            InputTransparent="True">
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#60A5FA" Offset="0.0" />
+                    <GradientStop Color="#00FFFFFF" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="150" />
+            </Border.StrokeShape>
+        </Border>
+
+        <ScrollView
+            x:Name="SettingsScroll"
+            Opacity="0"
+            TranslationY="34"
+            Scale="0.98">
+
+            <VerticalStackLayout Padding="24,48,24,28" Spacing="18">
+
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
+
+                    <Border
+                        WidthRequest="48"
+                        HeightRequest="48"
+                        Stroke="#35FFFFFF"
+                        StrokeThickness="1"
+                        Padding="0">
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BackButton_Tapped" />
+                        </Border.GestureRecognizers>
+
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#30FFFFFF" Offset="0.0" />
+                                <GradientStop Color="#10000000" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="24" />
+                        </Border.StrokeShape>
+
+                        <Label
+                            Text="‹"
+                            TextColor="White"
+                            FontSize="34"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Margin="0,-4,0,0" />
+                    </Border>
+
+                    <VerticalStackLayout Grid.Column="1" Spacing="2">
+                        <Label
+                            Text="Ayarlar"
+                            TextColor="White"
+                            FontSize="30"
+                            FontAttributes="Bold" />
+
+                        <Label
+                            Text="Rüzgar deneyimini özelleştir"
+                            TextColor="#CBD5E1"
+                            FontSize="13" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <Border
+                    Padding="18"
+                    Stroke="#35FFFFFF"
+                    StrokeThickness="1">
+
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#2AFFFFFF" Offset="0.0" />
+                            <GradientStop Color="#10000000" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="30" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="16">
+
+                        <Label
+                            Text="Genel"
+                            TextColor="White"
+                            FontSize="19"
+                            FontAttributes="Bold" />
+
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                            <VerticalStackLayout Spacing="3">
+                                <Label
+                                    Text="Fahrenheit kullan"
+                                    TextColor="White"
+                                    FontSize="15"
+                                    FontAttributes="Bold" />
+
+                                <Label
+                                    Text="Kapalıyken sıcaklık °C olarak gösterilir"
+                                    TextColor="#CBD5E1"
+                                    FontSize="12" />
+                            </VerticalStackLayout>
+
+                            <Switch
+                                x:Name="FahrenheitSwitch"
+                                Grid.Column="1"
+                                Toggled="FahrenheitSwitch_Toggled"
+                                OnColor="#60A5FA"
+                                ThumbColor="White"
+                                VerticalOptions="Center" />
+                        </Grid>
+
+                        <BoxView
+                            HeightRequest="1"
+                            Color="#22FFFFFF" />
+
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                            <VerticalStackLayout Spacing="3">
+                                <Label
+                                    Text="Açılışta konumumu kullan"
+                                    TextColor="White"
+                                    FontSize="15"
+                                    FontAttributes="Bold" />
+
+                                <Label
+                                    Text="Kapalıysa varsayılan şehir kullanılır"
+                                    TextColor="#CBD5E1"
+                                    FontSize="12" />
+                            </VerticalStackLayout>
+
+                            <Switch
+                                x:Name="UseLocationSwitch"
+                                Grid.Column="1"
+                                Toggled="UseLocationSwitch_Toggled"
+                                OnColor="#60A5FA"
+                                ThumbColor="White"
+                                VerticalOptions="Center" />
+                        </Grid>
+
+                        <BoxView
+                            HeightRequest="1"
+                            Color="#22FFFFFF" />
+
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                            <VerticalStackLayout Spacing="3">
+                                <Label
+                                    Text="Dinamik tema"
+                                    TextColor="White"
+                                    FontSize="15"
+                                    FontAttributes="Bold" />
+
+                                <Label
+                                    Text="Hava durumuna göre arka plan renkleri değişir"
+                                    TextColor="#CBD5E1"
+                                    FontSize="12" />
+                            </VerticalStackLayout>
+
+                            <Switch
+                                x:Name="DynamicThemeSwitch"
+                                Grid.Column="1"
+                                Toggled="DynamicThemeSwitch_Toggled"
+                                OnColor="#60A5FA"
+                                ThumbColor="White"
+                                VerticalOptions="Center" />
+                        </Grid>
+
+                        <BoxView
+                            HeightRequest="1"
+                            Color="#22FFFFFF" />
+
+                       
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border
+                    Padding="18"
+                    Stroke="#35FFFFFF"
+                    StrokeThickness="1">
+
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#2AFFFFFF" Offset="0.0" />
+                            <GradientStop Color="#10000000" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="30" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="15">
+
+                        <Label
+                            Text="Varsayılan şehir"
+                            TextColor="White"
+                            FontSize="19"
+                            FontAttributes="Bold" />
+
+                        <Border
+                            Padding="15"
+                            Stroke="#28FFFFFF"
+                            StrokeThickness="1">
+
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#22FFFFFF" Offset="0.0" />
+                                    <GradientStop Color="#0A000000" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="24" />
+                            </Border.StrokeShape>
+
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                <Border
+                                    WidthRequest="38"
+                                    HeightRequest="38"
+                                    StrokeThickness="0"
+                                    Padding="0">
+
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#60A5FA" Offset="0.0" />
+                                            <GradientStop Color="#33FFFFFF" Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="19" />
+                                    </Border.StrokeShape>
+
+                                    <Label
+                                        Text="⌖"
+                                        TextColor="White"
+                                        FontSize="19"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center" />
+                                </Border>
+
+                                <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                    <Label
+                                        x:Name="DefaultCityLabel"
+                                        Text="Adana, Türkiye"
+                                        TextColor="White"
+                                        FontSize="15"
+                                        FontAttributes="Bold"
+                                        LineBreakMode="TailTruncation" />
+
+                                    <Label
+                                        Text="Konum kapalıyken bu şehir açılır"
+                                        TextColor="#CBD5E1"
+                                        FontSize="12" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+
+                            <Border
+                                Stroke="#33FFFFFF"
+                                StrokeThickness="1"
+                                Padding="13">
+
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#24FFFFFF" Offset="0.0" />
+                                        <GradientStop Color="#10000000" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="24" />
+                                </Border.StrokeShape>
+
+                                <Entry
+                                    x:Name="DefaultCitySearchEntry"
+                                    Placeholder="Varsayılan şehir ara..."
+                                    PlaceholderColor="#CBD5E1"
+                                    TextColor="White"
+                                    FontSize="14"
+                                    BackgroundColor="Transparent"
+                                    ReturnType="Search"
+                                    Completed="DefaultCitySearchEntry_Completed" />
+                            </Border>
+
+                            <Border
+                                Grid.Column="1"
+                                WidthRequest="52"
+                                HeightRequest="52"
+                                Stroke="#35FFFFFF"
+                                StrokeThickness="1"
+                                Padding="0">
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="SearchDefaultCity_Tapped" />
+                                </Border.GestureRecognizers>
+
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#38FFFFFF" Offset="0.0" />
+                                        <GradientStop Color="#18FFFFFF" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="26" />
+                                </Border.StrokeShape>
+
+                                <Label
+                                    Text="⌕"
+                                    TextColor="White"
+                                    FontSize="23"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
+                            </Border>
+
+                        </Grid>
+
+                        <Border
+                            x:Name="DefaultCityResultsPanel"
+                            IsVisible="False"
+                            Padding="8"
+                            Stroke="#35FFFFFF"
+                            StrokeThickness="1">
+
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#E60F172A" Offset="0.0" />
+                                    <GradientStop Color="#CC020617" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="24" />
+                            </Border.StrokeShape>
+
+                            <VerticalStackLayout
+                                BindableLayout.ItemsSource="{Binding DefaultCityResults}"
+                                Spacing="4">
+
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border
+                                            Padding="13"
+                                            BackgroundColor="#12FFFFFF"
+                                            StrokeThickness="0">
+
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="DefaultCityResult_Tapped" />
+                                            </Border.GestureRecognizers>
+
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="19" />
+                                            </Border.StrokeShape>
+
+                                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                                <Label
+                                                    Text="📍"
+                                                    FontSize="17"
+                                                    VerticalOptions="Center" />
+
+                                                <Label
+                                                    Grid.Column="1"
+                                                    Text="{Binding DisplayName}"
+                                                    TextColor="White"
+                                                    FontSize="14"
+                                                    VerticalOptions="Center"
+                                                    LineBreakMode="TailTruncation" />
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Label
+                            x:Name="DefaultCityStatusLabel"
+                            Text=""
+                            TextColor="#CBD5E1"
+                            FontSize="12" />
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border
+                    Padding="18"
+                    Stroke="#35FFFFFF"
+                    StrokeThickness="1">
+
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#2AFFFFFF" Offset="0.0" />
+                            <GradientStop Color="#10000000" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="30" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="14">
+
+                        <Label
+                            Text="Favoriler"
+                            TextColor="White"
+                            FontSize="19"
+                            FontAttributes="Bold" />
+
+                        <Label
+                            Text="Favori şehirlerini temizlemek istersen buradan sıfırlayabilirsin."
+                            TextColor="#CBD5E1"
+                            FontSize="13"
+                            LineBreakMode="WordWrap" />
+
+                        <Border
+                            Padding="15"
+                            Stroke="#55FCA5A5"
+                            StrokeThickness="1">
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ClearFavorites_Tapped" />
+                            </Border.GestureRecognizers>
+
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#35EF4444" Offset="0.0" />
+                                    <GradientStop Color="#12EF4444" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="24" />
+                            </Border.StrokeShape>
+
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                <Label
+                                    Text="🗑️"
+                                    FontSize="20"
+                                    VerticalOptions="Center" />
+
+                                <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                    <Label
+                                        Text="Favorileri temizle"
+                                        TextColor="White"
+                                        FontSize="15"
+                                        FontAttributes="Bold" />
+
+                                    <Label
+                                        Text="Bu işlem kayıtlı şehirleri kaldırır"
+                                        TextColor="#FECACA"
+                                        FontSize="12" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
